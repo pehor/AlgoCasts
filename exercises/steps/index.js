@@ -17,6 +17,20 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+function steps(n) {
+	for (let i = 0; i < n; i++) {
+		const str = `${'#'.repeat(i+1)}${' '.repeat(n-i-1)}`
+		console.log(str)
+	}
+}
 
 module.exports = steps;
+
+// function steps(n, max) {
+// 	max = max || n
+// 	const str = `${'#'.repeat(max-(n-1))}${' '.repeat(n-1)}`
+// 	console.log(str)
+// 	if (n > 1) {
+// 		steps(n-1, max)
+// 	}
+// }

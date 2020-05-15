@@ -12,6 +12,45 @@
 //   4
 //   buzz
 
-function fizzBuzz(n) {}
+function fizzBuzz(n) {
+	let i = 1
+	while (i <= n) {
+		const m3 = i%3 === 0
+		const m5 = i%5 === 0
+		debugger
+
+		if (m3 && m5) {
+			console.log('fizzbuzz')
+		} else
+
+		if (m3 && !m5) {
+			console.log('fizz')
+		} else
+
+		if (!m3 && m5) {
+			console.log('buzz')
+		} else {
+		  console.log(i)	
+		}
+
+		i++		
+	}
+}
 
 module.exports = fizzBuzz;
+
+
+// function fizzBuzz(n) {
+// 	let i = 1
+// 	while (i <= n) {
+// 		const m3 = i%3 === 0
+// 		const m5 = i%5 === 0
+
+// 		let res = m3 ? 'fizz' : ''
+// 		res += m5 ? 'buzz' : ''
+
+// 		console.log(res || i)
+// 		i++
+		
+// 	}
+// }
