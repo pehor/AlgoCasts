@@ -10,8 +10,68 @@
 // on the tree class.  Each method should accept a
 // function that gets called with each element in the tree
 
-class Node {}
+class Node {
+	constructor(data){
+		this.data = data
+		this.children = []
+	}
+	add(data) {
+		this.children.push(new Node(data))
+	}
+	remove(data) {
+		this.children = this.children.filter((item) => item.data !== data)
+	}
+}
 
-class Tree {}
+class Tree {
+	constructor(){
+		this.root = null
+	}
+	traverseBF(func){
+		const arr = [this.root]
+		while(arr.length) {
+			const node = arr.shift()
+			arr.push(...node.children)
+			func(node)
+		}
+	}
+	traverseDF(func){
+		const arr = [this.root]
+		while(arr.length) {
+			const node = arr.shift()
+			arr.unshift(...node.children)
+			func(node)
+		}
+	}
+	//recursive
+	// traverseBF(func, node = this.root, nodeList = []){
+	// 	nodeList = nodeList.concat(node.children)
+	// 	func(node)
+	// 	node = nodeList.shift()
+	// 	if(!node) return
+	// 	this.traverseBF(func, node, nodeList)
+	// }
+	//recursive
+	// traverseDF(func, node){
+	// 	node = node || this.root
+	// 	func(node)
+	// 	node.children.forEach((child) => {
+	// 		this.traverseDF(func, child)
+	// 	})
+	// }
+}
+
+const letters = [];
+const t = new Tree();
+t.root = new Node('a');
+t.root.add('b');
+t.root.add('c');
+t.root.children[0].add('d');
+
+t.traverseBF(node => {
+  letters.push(node.data);
+});
+
+
 
 module.exports = { Tree, Node };
